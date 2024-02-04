@@ -1,6 +1,7 @@
-<h1>Apiseriesfilmes, consulata de uma API Web</h1>
+# API das Series de Filmes
 
-<h3>Entrega de endpoints de uma API de filmes de serie através do framework <a href="https://start.spring.io/">Spring Boot 3.2.2 definitive</a>:</h3>
+Este projeto, chamado de *apiseriesfilmes* consulata de uma API Web, entrega de endpoints de uma API de filmes de serie através do   framework <a href="https://start.spring.io/">
+  Spring Boot 3.2.2 definitive</a>.
 
 <h4>Tecnologias utilizadas:</h4>
 
