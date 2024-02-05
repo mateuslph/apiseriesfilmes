@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 
 public class ConsumoApi {
 
-    public String obterDados(String endereco) {
+    public String obterDadosDaApi(String endereco) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endereco))
@@ -26,6 +26,5 @@ public class ConsumoApi {
         String json = response.body();
         return json;
     }
-
 
 }

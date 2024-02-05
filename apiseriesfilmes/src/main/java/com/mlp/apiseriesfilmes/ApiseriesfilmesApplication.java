@@ -18,13 +18,13 @@ public class ApiseriesfilmesApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 //		System.out.println("Primeiro projeto Spring sem Web");
 		ConsumoApi consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls=&apikey=f7a78d0d");
+		var json = consumoApi.obterDadosDaApi("https://www.omdbapi.com/?t=gilmore+girls=&apikey=f7a78d0d");
 		System.out.println(json);
 //		json = consumoApi.obterDados("https://coffee.alexflipnote.dev/random.json");
 //		System.out.println(json);
 
 		ConverteDados conversor = new ConverteDados();
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
+		DadosSerie dados = conversor.obterDadosDoBody(json, DadosSerie.class);
 		System.out.println(dados);
 	}
 }
