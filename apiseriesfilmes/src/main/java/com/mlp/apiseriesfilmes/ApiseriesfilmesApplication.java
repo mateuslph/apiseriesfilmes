@@ -19,12 +19,14 @@ public class ApiseriesfilmesApplication implements CommandLineRunner {
 //		System.out.println("Primeiro projeto Spring sem Web");
 		ConsumoApi consumoApi = new ConsumoApi();
 		var json = consumoApi.obterDadosDaApi("https://www.omdbapi.com/?t=gilmore+girls=&apikey=f7a78d0d");
+		// vai retornar uma String formatada no padrao Json da API
 		System.out.println(json);
 //		json = consumoApi.obterDados("https://coffee.alexflipnote.dev/random.json");
 //		System.out.println(json);
 
 		ConverteDados conversor = new ConverteDados();
 		DadosSerie dados = conversor.obterDadosDoBody(json, DadosSerie.class);
+		// vai retornar uma classe mapeada pelo metodo readValue() da classe nativa ObjectMapper
 		System.out.println(dados);
 	}
 }
