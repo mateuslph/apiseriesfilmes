@@ -1,5 +1,6 @@
 package com.mlp.apiseriesfilmes;
 
+import com.mlp.apiseriesfilmes.model.DadosEpisodio;
 import com.mlp.apiseriesfilmes.model.DadosSerie;
 import com.mlp.apiseriesfilmes.service.ConsumoApi;
 import com.mlp.apiseriesfilmes.service.ConverteDados;
@@ -28,5 +29,9 @@ public class ApiseriesfilmesApplication implements CommandLineRunner {
 		DadosSerie dados = conversor.obterDadosDoBody(json, DadosSerie.class);
 		// vai retornar uma classe mapeada pelo metodo readValue() da classe nativa ObjectMapper
 		System.out.println(dados);
+
+		json = consumoApi.obterDadosDaApi("https://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=f7a78d0d");
+		DadosEpisodio dadosEpisodio = conversor.obterDadosDoBody(json, DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
 	}
 }
