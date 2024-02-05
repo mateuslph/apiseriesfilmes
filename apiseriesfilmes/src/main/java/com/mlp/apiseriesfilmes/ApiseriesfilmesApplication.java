@@ -2,11 +2,15 @@ package com.mlp.apiseriesfilmes;
 
 import com.mlp.apiseriesfilmes.model.DadosEpisodio;
 import com.mlp.apiseriesfilmes.model.DadosSerie;
+import com.mlp.apiseriesfilmes.model.DadosTemporada;
 import com.mlp.apiseriesfilmes.service.ConsumoApi;
 import com.mlp.apiseriesfilmes.service.ConverteDados;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ApiseriesfilmesApplication implements CommandLineRunner {
@@ -33,5 +37,13 @@ public class ApiseriesfilmesApplication implements CommandLineRunner {
 		json = consumoApi.obterDadosDaApi("https://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=f7a78d0d");
 		DadosEpisodio dadosEpisodio = conversor.obterDadosDoBody(json, DadosEpisodio.class);
 		System.out.println(dadosEpisodio);
+
+		List<DadosTemporada> temporadas = new ArrayList<>();
+		for (int i = 1; i<=dados.totalTemporadas(); i++) {
+			json = consumoApi.obterDadosDaApi("https://www.omdbapi.com/?t=gilmore+girls&season=" + i + "&apikey=f7a78d0d");
+			DadosTemporada dadosTemporada = conversor.obterDadosDoBody(json, DadosTemporada.class);
+			temporadas.add(dadosTemporada);
+		}
+		temporadas.forEach(System.out::println);
 	}
 }
