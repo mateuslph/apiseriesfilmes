@@ -1,5 +1,6 @@
 package com.mlp.apiseriesfilmes.principal;
 
+import com.mlp.apiseriesfilmes.model.DadosEpisodio;
 import com.mlp.apiseriesfilmes.model.DadosSerie;
 import com.mlp.apiseriesfilmes.model.DadosTemporada;
 import com.mlp.apiseriesfilmes.service.ConsumoApi;
@@ -32,5 +33,14 @@ public class Principal {
 			temporadas.add(dadosTemporada);
 		}
 		temporadas.forEach(System.out::println);
+
+//        for (int i = 0; i < dados.totalTemporadas(); i++) {
+//            List<DadosEpisodio> episodioTemporada = temporadas.get(i).episodios();
+//            for (int j = 0; j < episodioTemporada.size(); j++) {
+//                System.out.println(episodioTemporada.get(j).titulo());
+//            }
+//        }
+
+        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
     }
 }
