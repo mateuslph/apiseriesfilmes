@@ -1,9 +1,12 @@
 package com.mlp.apiseriesfilmes.principal;
 
 import com.mlp.apiseriesfilmes.model.DadosSerie;
+import com.mlp.apiseriesfilmes.model.DadosTemporada;
 import com.mlp.apiseriesfilmes.service.ConsumoApi;
 import com.mlp.apiseriesfilmes.service.ConverteDados;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
@@ -20,5 +23,14 @@ public class Principal {
         var json = consumoApi.obterDadosDaApi(ENDERECO + nomeSerie.replace(" ", "+") + API_KEY);
         DadosSerie dados = conversor.obterDadosDoBody(json, DadosSerie.class);
         System.out.println(dados);
+
+        List<DadosTemporada> temporadas = new ArrayList<>();
+		for (int i = 1; i<=dados.totalTemporadas(); i++) {
+			json = consumoApi.obterDadosDaApi(ENDERECO + nomeSerie.replace(" ", "+")
+                    + "&season=" + i + API_KEY);
+			DadosTemporada dadosTemporada = conversor.obterDadosDoBody(json, DadosTemporada.class);
+			temporadas.add(dadosTemporada);
+		}
+		temporadas.forEach(System.out::println);
     }
 }

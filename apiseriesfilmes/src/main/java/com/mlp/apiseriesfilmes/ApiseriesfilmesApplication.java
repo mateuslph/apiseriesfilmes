@@ -18,12 +18,5 @@ public class ApiseriesfilmesApplication implements CommandLineRunner {
 		Principal principal = new Principal();
 		principal.exibeMenu();
 
-//		List<DadosTemporada> temporadas = new ArrayList<>();
-//		for (int i = 1; i<=dados.totalTemporadas(); i++) {
-//			json = consumoApi.obterDadosDaApi("https://www.omdbapi.com/?t=gilmore+girls&season=" + i + "&apikey=f7a78d0d");
-//			DadosTemporada dadosTemporada = conversor.obterDadosDoBody(json, DadosTemporada.class);
-//			temporadas.add(dadosTemporada);
-//		}
-//		temporadas.forEach(System.out::println);
 	}
 }
