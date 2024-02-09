@@ -16,7 +16,7 @@ public class Episodio {
         this.titulo = dadosEpisodio.titulo();
         this.numeroEpisodio = dadosEpisodio.numeroDeEpisodios();
         try {
-            this.avaliacao = Double.valueOf(dadosEpisodio.avaliacoes());
+            this.avaliacao = Double.valueOf(dadosEpisodio.avaliacao());
         } catch (NumberFormatException ex) {
             this.avaliacao = 0.0;
         }
@@ -36,8 +36,8 @@ public class Episodio {
     public void setNumeroEpisodio(Integer numeroEpisodio) { this.numeroEpisodio = numeroEpisodio; }
     public Double getAvliacao() { return avaliacao; }
     public void setAvliacao(Double avliacao) { this.avaliacao = avliacao; }
-    public LocalDate getDataAvaliacao() { return dataLancamento; }
-    public void setDataAvaliacao(LocalDate dataAvaliacao) { this.dataLancamento = dataAvaliacao; }
+    public LocalDate getDataLancamento() { return dataLancamento; }
+    public void setDataLancamento(LocalDate dataAvaliacao) { this.dataLancamento = dataAvaliacao; }
 
     @Override
     public String toString() {
