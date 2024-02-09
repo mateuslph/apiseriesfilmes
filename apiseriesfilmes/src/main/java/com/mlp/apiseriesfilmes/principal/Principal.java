@@ -3,6 +3,7 @@ package com.mlp.apiseriesfilmes.principal;
 import com.mlp.apiseriesfilmes.model.DadosEpisodio;
 import com.mlp.apiseriesfilmes.model.DadosSerie;
 import com.mlp.apiseriesfilmes.model.DadosTemporada;
+import com.mlp.apiseriesfilmes.model.Episodio;
 import com.mlp.apiseriesfilmes.service.ConsumoApi;
 import com.mlp.apiseriesfilmes.service.ConverteDados;
 
@@ -49,5 +50,12 @@ public class Principal {
                 .sorted(Comparator.comparing(DadosEpisodio::avaliacoes).reversed())
                 .limit(5)
                 .forEach(System.out::println);
+
+        List<Episodio> episodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream()
+                        .map(d -> new Episodio(t.numeroEpisodios(), d))
+                ).collect(Collectors.toList());
+
+        episodios.forEach(System.out::println);
     }
 }
