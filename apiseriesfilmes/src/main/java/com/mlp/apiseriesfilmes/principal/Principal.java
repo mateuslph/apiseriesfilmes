@@ -7,8 +7,10 @@ import com.mlp.apiseriesfilmes.service.ConsumoApi;
 import com.mlp.apiseriesfilmes.service.ConverteDados;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Principal {
 
@@ -34,13 +36,18 @@ public class Principal {
 		}
 		temporadas.forEach(System.out::println);
 
-//        for (int i = 0; i < dados.totalTemporadas(); i++) {
-//            List<DadosEpisodio> episodioTemporada = temporadas.get(i).episodios();
-//            for (int j = 0; j < episodioTemporada.size(); j++) {
-//                System.out.println(episodioTemporada.get(j).titulo());
-//            }
-//        }
-
         temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
+
+        List<DadosEpisodio> dadosEpisodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream())
+//                .collect(Collectors.toList()); // gera uma lista imutavel
+                .toList();  // pode modificar a lista
+
+        System.out.println("\nTop 5 episódios:");
+        dadosEpisodios.stream()
+                .filter(e -> !e.avaliacoes().equalsIgnoreCase("N/A"))
+                .sorted(Comparator.comparing(DadosEpisodio::avaliacoes).reversed())
+                .limit(5)
+                .forEach(System.out::println);
     }
 }
