@@ -5,7 +5,7 @@
 <h4>Tecnologias utilizadas:</h4>
 
 * <a href="https://start.spring.io/">Spring Boot 3.2.2 definitive</a>
-* Java 17 LTS;
+* JavaSE 17 LTS;
 * Maven (Gerenciador de Dependencias);
 
 <h4>Dependências utilizadas:</h4>
